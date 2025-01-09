@@ -1,5 +1,6 @@
 using Bloggie.Web.Data;
 using Bloggie.Web.Models.Domain;
+using Bloggie.Web.Models.ViewModels;
 using Bloggie.Web.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -28,7 +29,15 @@ namespace Bloggie.Web.Pages.Admin.Blogs
             await blogPostRepository.UpdateAsync(BlogPost);
 
             // Create Notifications using View Data
-            ViewData["MessageDescription"] = "Blog Post Updated Successfully";
+            //ViewData["MessageDescription"] = "Blog Post Updated Successfully";
+
+            // Create Notifications using enum
+            ViewData["Notification"] = new Notification
+            {
+                Message = "Blog Post Updated Successfully",
+                Type = Enums.NotificationType.Success
+            };
+
             return Page();
         }
 

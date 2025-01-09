@@ -57,6 +57,9 @@ namespace Bloggie.Web.Pages.Admin.Blogs
             // update code to use add async method
             await blogPostRepository.AddAsync(blogPost);
 
+            // Create Notifications using temp Data
+            TempData["MessageDescription"] = "New Blog Post Added Successfully";
+
             return RedirectToPage("/Admin/Blogs/List");
         }
     }
